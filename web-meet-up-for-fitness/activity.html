@@ -153,17 +153,6 @@
 				<div class='sports'>
 				</div>
 			</a>
-			<div class="share" id = "activity_add_on">
-				<p><b><%=aName%></b></p>
-				<p><b>Created By: </b><%=username%></p>
-				<p><b>Sports Type: </b><%=sportsType%></p>
-				<p><b>Activity Time: </b><%=aTime%></p>
-				<p><b>Location: </b><%=location%></p>
-				<p><b>People Attended: </b><%=attended.length%>/<%=maxPeople%>
-
-				<button id="join_activity" onclick="return attend_activity(\'' + userId + ',' + aid + '\')">Attend</button>
-
-			</div>
 		</div>
 	</script>
 
@@ -172,38 +161,17 @@
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
 	<script type="text/javascript" src="js/underscore.js"></script>
 
-	<script type="text/javascript">
-	$(document).ready(function(){
-		getWaterfall();
-	});
 
-	</script>
 	    <script>
 
-		function my_activity_userId_retrieve()
-			{
-			    var userId = getQueryVariable("userId");
-			    return userId;
-			 }
+
         function lightbox(){
         	var userId = my_activity_userId_retrieve();
           	$.colorbox({width:"35%", height:"80%", iframe:true, href:"create_new_activity.html?userId=" + userId
 
         });
         }
-				function lightbox2(){
-					var userId = my_activity_userId_retrieve();
-						$.colorbox({width:"35%", height:"80%", iframe:true, href:"create_new_team_activity.html?userId=" + userId
 
-				});
-				}
-				function lightbox3(){
-					var userId = my_activity_userId_retrieve();
-						$.colorbox({width:"40%", height:"80%", iframe:true, href:"profile2.html?userId=" + userId
-
-				});
-				}
-    </script>
         <script src="js/jquery.colorbox.js"></script>
         <script src="js/activity.js"></script>
 	    <script src="js/index.js"></script>
