@@ -19,6 +19,8 @@
     <!--  Light Bootstrap Table core CSS    -->
     <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.css">
+    
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="assets/css/demo.css" rel="stylesheet" />
@@ -27,6 +29,8 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/colorbox.css" />
+
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <style type="text/css">
     #icon_user {
@@ -68,19 +72,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="notifications.html">
+                    <a href="">
                         <i class="pe-7s-bell"></i>
                         <p>Notifications</p>
                     </a>
                 </li>
 				<li class="active-pro">
-                    <a href="">
+                    <a href="index.html">
                         <i class="pe-7s-rocket"></i>
                         <p>Log Out</p>
                     </a>
@@ -101,7 +105,7 @@
         </nav>
 
 
-        <div class="content">
+        <div class="content" id='partner_profile'>
                 <h4 class='text-center'> We found a recommendation for you : </h4>
         
                 <div class="col-md-offset-2 col-md-8" >
@@ -112,17 +116,17 @@
                         <div class="content">
                             <div class="author">
                                 <img class="avatar border-gray" src="img/profile_pics.jpg" alt="..."/>
-                                <h3 class="title">Stephn Curry</h3>
+                                <h3 class="title">Stephen Curry</h3>
                                 <h4>USA</h4>
-                                <button type="button" class="btn btn-outline-info"> View More</button>
+                                <button type="button" onclick='view_more();' class="btn btn-outline-info"> View More</button>
 
                             </div>
 
                         </div>
                         <hr>
                         <div class="text-center" id='feedback'>
-                            <button href="#" class="btn btn-success"><i class="fa fa-check"></i> Accept </button>
-                            <button href="#" class="btn btn-danger"><i class="fa fa-times"></i> Decline </button>
+                            <button onclick="accept();" class="btn btn-success"><i class="fa fa-check"></i> Accept </button>
+                            <button onclick="decline();" class="btn btn-danger"><i class="fa fa-times"></i> Decline </button>
 
                         </div>
                     </div>
@@ -136,7 +140,48 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    function view_more(){
+            $.colorbox({width:"60%", height:"80%", iframe:true, href:"view_more.html"
 
+        });
+    };
+    function decline() {
+        $('#partner_profile div').empty();
+        $.alert({
+                        title: 'Oh Okay',
+                        type: 'red',
+                        content: 'You need to wait for at least 2 days for us to find you a new recommendation',
+                        buttons: {
+                        ok: function () {
+                                $('#partner_profile div').html("We are sorry, but your new recommendation is on the way");
+
+                            }
+                        }
+
+
+                    });
+    };
+     function accept() {
+            $.alert({
+                        title: 'Glad you find exchange partner',
+                        content: 'Please go ahead to talk with your future exchange partner through facebook by clicking the button below',
+                        animation: 'rotate',
+                        closeAnimation: 'right',
+                        buttons: {
+                        facebook: function () {
+                                this.setCloseAnimation('rotate');
+                                window.location.href = 'https://www.facebook.com/StephenCurryOfficial/';
+
+                            }
+                        },
+                        backgroundDismiss: function () {
+                            return false;
+                        }
+            });
+    }
+
+</script>
 </body>
 
     <!--   Core JS Files   -->
@@ -149,8 +194,12 @@
 	<!--  Charts Plugin -->
 	<script src="assets/js/chartist.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.0/jquery-confirm.min.js"></script>
+
     <!--  Notifications Plugin    -->
     <script src="assets/js/bootstrap-notify.js"></script>
+
+        <script src="assets/js/jquery.colorbox.js"></script>
 
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
